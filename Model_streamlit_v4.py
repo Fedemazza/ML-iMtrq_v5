@@ -529,7 +529,7 @@ if st.button('Hacer predicción'):
  
     X_NN_CPV = loaded_scaler_NN_CPV.transform(X_CPV)
 
-    if Format_New == 'Video':
+    if Format_New_corregido == 'Video':
         st.write('CPV')
         #st.write('XGBoost')
         #st.write(prediccion_modelo(xgboost_CPV,X_CPV)[0])
