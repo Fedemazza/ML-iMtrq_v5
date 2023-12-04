@@ -176,6 +176,8 @@ with st.sidebar:
     d = st.date_input(    "Seleccionar el período de la campaña [DD.MM.AAAA]",(today,today),   format="DD.MM.YYYY")
 
     try:
+        Año = today.year
+        Mes = today.month
         fecha_inicio = d[0]
         fecha_fin = d[1]        
         dias_campaña = (fecha_fin-fecha_inicio).days + 1
@@ -210,7 +212,14 @@ with st.sidebar:
     
     Client = st.selectbox(    'Client',    (['BR','HN',  'EP', 'QQ', 'CJ','OG', 'AV','Nuevo'])) #['Hughesnet', 'Braun', 'Enterprise', 'QuickQuack', 'ChefJames','OldGlory', 'AOV']
     Client = dict_client[Client]
-    Format_New = st.selectbox(    'Format_New',    (['Display', 'Video']))
+    
+    Format_New = st.selectbox(    'Format_New',    (['Display', 'Video','Multiple']))
+    if Format_New == 'Multiple':
+        Format_New_corregido = 'Video'
+    else:
+        Format_New_corregido = Format_New
+
+    
     Platform = st.selectbox(    'Platform',    (['Google Ads','Search','Facebook&Instagram', 'Discovery', 'Facebook', 'Performance Max','NoPlatform',  'Facebook & Instagram', 'Programmatic','Google Ads Search', 'LinkedIn','Google Ads Display', 'Google Ads  PMAX']))
     Strategy = st.selectbox(    'Strategy',    (['Consideration','Awareness', 'Conversion',  'Views', 'NoStrategy']))
     Plataforma = st.selectbox(    'Plataforma',    (['Google Ads','Meta',  'External Source', 'NoPlataforma']))
@@ -228,7 +237,7 @@ with st.sidebar:
     'Media_type': [Media_type],
     'Traffic_source': [Traffic_source],
     'Client': [Client],
-    'Format_New': [Format_New],
+    'Format_New': [Format_New_corregido],
     'Platform': [Platform],
     'Strategy': [Strategy],
     'Plataforma': [Plataforma],
